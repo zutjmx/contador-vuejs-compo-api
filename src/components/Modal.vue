@@ -1,21 +1,35 @@
 <template>
-  <div class="modal-background fade-in">
+  <div class="modal-background fade-in"
+       @click.self="$emit('on:close')"
+  >
       <div class="modal-container">
           
-          <!-- <slot /> -->
-          <!-- <slot>
+        <slot name="header"/>
+        <slot name="body"/>
+        <slot name="footer"/>
+
+          <!-- <slot />
+          <slot>
               <div class="center">
                   Esto aparece si no hay contenido
               </div>
           </slot> -->
+
       </div>
   </div>
 </template>
 
 <script>
 export default {
+    props: {
+      title: {
+        type: String,
+        required: true
+      }
+    },
+    emits: ['on:close'],
     setup(props, context) {
-
+      console.log({props, context})
     }
 }
 </script>
